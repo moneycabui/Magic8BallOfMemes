@@ -1,0 +1,14 @@
+.memeContainer {
+  justify-content: center;
+  align-content: center;
+  max-height: 50%;
+}
+
+.currentMeme {
+  justify-content: center;
+  align-content: center;
+  height: 580px;
+  width: 90%;
+  margin-left: 5%;
+  object-fit: contain;
+}

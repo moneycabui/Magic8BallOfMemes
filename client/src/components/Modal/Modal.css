@@ -1,0 +1,27 @@
+.modal {
+  height: 70%;
+  position: fixed;
+  z-index: 500;
+  background-color: #1A1A1A;
+  width: 50%;
+  border: 1px solid #1A1A1A;
+  border-radius: 10px;
+  box-shadow: 2px 2px 15px 5px #1A1A1A;
+  padding: 20px 15px;
+  left: 25%;
+  top: 15%;
+  box-sizing: border-box;
+  animation: all 3ms ease-out;
+}
+
+.closeIcon {
+  justify-content: space-around;
+  cursor: pointer;
+  padding: 20px;
+  margin: 15px 10px;
+  float: right;
+  position: fixed;
+  z-index: 500;
+  left: 79%;
+  top: 9.5%;
+}

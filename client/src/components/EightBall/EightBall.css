@@ -1,0 +1,25 @@
+.gifContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.eightBall {
+  height: 100%;
+  width: 100%;
+}
+
+.transparentEightBall {
+  position: absolute;
+  background-color: white;
+  color: white;
+  border-radius: 50%;
+  width: 375px;
+  height: 375px;
+  z-index: 2;
+  opacity: 0;
+  margin-left: 0%;
+  cursor: pointer;
+}
