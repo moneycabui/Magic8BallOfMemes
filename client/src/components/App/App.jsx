@@ -3,18 +3,22 @@ import axios from 'axios';
 import styles from './App.css';
 import EightBall from '../EightBall';
 import Modal from '../Modal';
+import { IoHeart } from "react-icons/io5";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       displayModal: false,
+      openCloseCount: 0,
       currentMeme: '',
       currentMemeDescription: '',
       trendingMemes: [],
     }
     this.getMeme = this.getMeme.bind(this);
     // this.getTrendingMemes = this.getTrendingMemes.bind(this);
+    this.handleTrendingClick = this.handleTrendingClick.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
   }
 
@@ -22,6 +26,13 @@ class App extends React.Component {
     this.getMeme();
     // this.getTrendingMemes()
   }
+
+  // componentDidUpdate() {
+  //   const { openCloseCount } = this.state;
+  //   if (openCloseCount % 2 === 0 && openCloseCount !==0) {
+  //     this.getMeme();
+  //   }
+  // }
 
   getMeme() {
     axios.get('/answer')
@@ -50,8 +61,21 @@ class App extends React.Component {
   //     })
   // }
 
+
+  handleTrendingClick() {
+    console.log('Trending Click');
+  }
+
+  handleSearchClick() {
+    console.log('Search Click')
+  }
+
   toggleModal() {
-    this.setState({ displayModal: !this.state.displayModal });
+    let clickCount = this.state.openCloseCount + 1;
+    this.setState({
+      displayModal: !this.state.displayModal,
+      openCloseCount: clickCount
+    });
   }
 
   render() {
@@ -78,11 +102,22 @@ class App extends React.Component {
       <div className={styles.app}>
         <EightBall toggleModal={this.toggleModal} />
         {memesRender}
-        <div></div>
         <br/>
-        <br/>
-        <h1>Magic 8 Ball</h1>
-        <h3></h3>
+        <div className={styles.headersAndButtonsContainer}>
+          <div>
+            <h2>Magic 8 Ball</h2>
+            <h3>- Ask a yes or no question - then click the ball to reveal answer -</h3>
+            <br/>
+          </div>
+          <div>
+            {/* <button className={styles.heartButton} > */}
+              {/* <IoHeart /> */}
+            {/* </button> */}
+            <button className={styles.trendingButton} onClick={this.handleTrendingClick}>Trending Memes</button>
+            <button className={styles.searchButton} onClick={this.handleSearchClick}>Search Memes</button>
+            {/* <button className={styles.favoritedButton}>Favorited Memes</button> */}
+          </div>
+        </div>
       </div>
     )
   }

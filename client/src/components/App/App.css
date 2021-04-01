@@ -11,14 +11,69 @@ html, body {
 .app {
   display: flex;
   flex-direction: column;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Amatic SC', 'Sacramento', 'Dancing Script', cursive;
   margin: 0 auto;
   max-width: 1280px;
   position: relative;
 }
 
-h1 {
-  font-family: 'Sacramento', 'Dancing Script', cursive;
+h2 {
+  font-family: 'Amatic SC', 'Sacramento', 'Dancing Script', cursive;
   font-size: 48px;
   color: #C4C4C4;
+  margin: 0px;
+}
+
+h3 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
+  color: #C4C4C4;
+  margin: 0px;
+}
+
+.trendingButton,
+.searchButton,
+.favoritedButton,
+.heartButton {
+  padding: 20px;
+  margin: 25px 10px;
+  margin-right: 20px;
+  justify-content: center;
+  font-family: "montserrat", sans-serif;
+  font-weight: 700;
+  border: none;
+  text-transform: uppercase;
+  border-radius: 3px;
+  cursor: pointer;
+  color: white;
+  background-image: linear-gradient(to right, #1CD8D2 0%, #93EDC7  51%, #1CD8D2  100%);
+  background-size: 200%;
+  transition: 0.5s;
+  /* box-shadow: 2px 2px 7px 1px #636363; */
+  outline: none;
+}
+
+.trendingButton:hover,
+.trendingButton:focus,
+.searchButton:hover,
+.searchButton:focus,
+.favoritedButton:hover,
+.favoritedButton:focus,
+.heartButton:hover,
+.heartButton:focus {
+  background-position: right;
+  outline: none;
+  border: none;
+}
+
+.heartButton {
+  color: #E4A4E6;
+}
+
+.headersAndButtonsContainer {
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-gap: 100px;
+  justify-items: space-between;
+  align-items: stretch;
 }
