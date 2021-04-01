@@ -12,13 +12,13 @@ class EightBall extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.toggleModal();
+    this.props.openModal();
   }
 
   render() {
     return (
       <div className={styles.gifContainer}>
-        <img className={styles.eightBall} src="/gif/Magic8BallGIF.gif"/>
+        <img className={styles.eightBall} id="background" src="/gif/Magic8BallGIF.gif"/>
         <div onClick={this.handleClick} className={styles.transparentEightBall}></div>
       </div>
     )
@@ -27,6 +27,3 @@ class EightBall extends React.Component {
 
 
 export default EightBall;
-
-// Position = sticky
-// Set it to Top 20%....

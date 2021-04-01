@@ -10,16 +10,17 @@ class App extends React.Component {
     super(props);
     this.state = {
       displayModal: false,
-      openCloseCount: 0,
       currentMeme: '',
       currentMemeDescription: '',
       trendingMemes: [],
+      searchedMemes: [],
     }
     this.getMeme = this.getMeme.bind(this);
     // this.getTrendingMemes = this.getTrendingMemes.bind(this);
     this.handleTrendingClick = this.handleTrendingClick.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentDidMount() {
@@ -27,13 +28,15 @@ class App extends React.Component {
     // this.getTrendingMemes()
   }
 
-  componentDidUpdate() {
-    const { openCloseCount } = this.state;
-    if (openCloseCount % 2 === 0 && openCloseCount !==0) {
-      this.getMeme();
-    }
-  }
+  // componentDidUpdate(prev) {
+  //   const { openCloseCount } = this.state;
+  //   const { openCloseCount: previousCount } = prev;
+  //   if (openCloseCount !== previousCount && openCloseCount !== 0) {
+  //     this.getMeme();
+  //   }
+  // }
 
+  // Get request to retrieve 8 ball answer(s)
   getMeme() {
     axios.get('/answer')
       .then((response) => {
@@ -50,17 +53,30 @@ class App extends React.Component {
       })
   }
 
-  // getTrendingMemes() {
-  //   axios.get('/trending')
-  //     .then((response) => {
-  //       const memes = response.data;
-  //       this.setState({ trendingMemes: memes })
-  //     })
-  //     .catch((error) => {
-  //       console.log('Error fetching trending memes: ', error);
-  //     })
-  // }
+  // Get request to retrieve searched gif(s)/meme(s)
+  getSearchedMemes(searchedKeyword) {
+    let keyword = { keyword: searchedKeyword };
+    axios.get('/searched', keyword)
+      .then((response) => {
+        const searched = response.data;
+        this.setState({ searchedMemes: searched });
+      })
+      .catch((error) => {
+        console.log('Error fetching searched memes: ', error);
+      })
+  }
 
+  // Get requet to retrieve trending gif(s)/meme(s)
+  getTrendingMemes() {
+    axios.get('/trending')
+      .then((response) => {
+        const memes = response.data;
+        this.setState({ trendingMemes: memes });
+      })
+      .catch((error) => {
+        console.log('Error fetching trending memes: ', error);
+      })
+  }
 
   handleTrendingClick() {
     console.log('Trending Click');
@@ -70,12 +86,25 @@ class App extends React.Component {
     console.log('Search Click')
   }
 
-  toggleModal() {
-    let clickCount = this.state.openCloseCount + 1;
-    this.setState({
-      displayModal: !this.state.displayModal,
-      openCloseCount: clickCount
-    });
+  closeModal() {
+    this.getMeme();
+    this.setState({ displayModal: false });
+    document.getElementById("background").style.filter = "none"
+    document.getElementById("contents").style.filter = "none"
+  }
+
+  openModal() {
+    this.setState({ displayModal: true });
+    document.getElementById("background").style.filter = "blur(8px)";
+    document.getElementById("contents").style.filter = "blur(8px)";
+    // document.getElementById("background").onClick = () => {
+    //   this.closeModal()
+    // }
+    // document.getElementById("contents").onClick = () => {
+    //   this.closeModal()
+    // }
+    document.getElementById('background').onclick = this.closeModal;
+    document.getElementById('contents').onclick = this.closeModal;
   }
 
   render() {
@@ -90,7 +119,7 @@ class App extends React.Component {
     if (displayModal === true) {
       memesRender = (
         <Modal
-          toggleModal={this.toggleModal}
+        closeModal={this.closeModal}
           currentMeme={currentMeme}
           currentMemeDescription={currentMemeDescription}
           trendingMemes={trendingMemes}
@@ -100,22 +129,22 @@ class App extends React.Component {
 
     return (
       <div className={styles.app}>
-        <EightBall toggleModal={this.toggleModal} />
+        <EightBall openModal={this.openModal} closeModal={this.closeModal}/>
         {memesRender}
         <br/>
-        <div className={styles.headersAndButtonsContainer}>
+        <div className={styles.headersAndButtonsContainer} id="contents">
           <div>
             <h2>Magic 8 Ball</h2>
             <h3>- Ask a yes or no question - then click the ball to reveal answer -</h3>
             <br/>
           </div>
-          <div>
+          <div className={styles.buttonsContainer}>
             {/* <button className={styles.heartButton} > */}
               {/* <IoHeart /> */}
             {/* </button> */}
+            {/* <button className={styles.favoritedButton}>Favorited Memes</button> */}
             <button className={styles.trendingButton} onClick={this.handleTrendingClick}>Trending Memes</button>
             <button className={styles.searchButton} onClick={this.handleSearchClick}>Search Memes</button>
-            {/* <button className={styles.favoritedButton}>Favorited Memes</button> */}
           </div>
         </div>
       </div>

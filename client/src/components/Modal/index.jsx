@@ -5,7 +5,7 @@ import Memes from '../Memes';
 
 const Modal = (props) => {
   const {
-    toggleModal,
+    closeModal,
     currentMeme,
     currentMemeDescription,
     trendingMemes,
@@ -13,7 +13,7 @@ const Modal = (props) => {
 
   return (
     <div className={styles.modal}>
-      <VscChromeClose className={styles.closeIcon} onClick={toggleModal} size="30" color="#66FCF1" />
+      <VscChromeClose className={styles.closeIcon} onClick={closeModal} size="30" color="#66FCF1" />
       <Memes
         currentMeme={currentMeme}
         currentMemeDescription={currentMemeDescription}

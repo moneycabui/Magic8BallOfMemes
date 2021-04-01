@@ -49,8 +49,8 @@ h3 {
   background-image: linear-gradient(to right, #1CD8D2 0%, #93EDC7  51%, #1CD8D2  100%);
   background-size: 200%;
   transition: 0.5s;
-  /* box-shadow: 2px 2px 7px 1px #636363; */
   outline: none;
+  /* box-shadow: 2px 2px 7px 1px #636363; */
 }
 
 .trendingButton:hover,
@@ -66,9 +66,6 @@ h3 {
   border: none;
 }
 
-.heartButton {
-  color: #E4A4E6;
-}
 
 .headersAndButtonsContainer {
   display: grid;
@@ -76,4 +73,12 @@ h3 {
   grid-gap: 100px;
   justify-items: space-between;
   align-items: stretch;
+}
+
+.buttonsContainer {
+  justify-self: end;
+}
+
+.heartButton {
+  color: #E4A4E6;
 }
