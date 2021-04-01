@@ -27,12 +27,12 @@ class App extends React.Component {
     // this.getTrendingMemes()
   }
 
-  // componentDidUpdate() {
-  //   const { openCloseCount } = this.state;
-  //   if (openCloseCount % 2 === 0 && openCloseCount !==0) {
-  //     this.getMeme();
-  //   }
-  // }
+  componentDidUpdate() {
+    const { openCloseCount } = this.state;
+    if (openCloseCount % 2 === 0 && openCloseCount !==0) {
+      this.getMeme();
+    }
+  }
 
   getMeme() {
     axios.get('/answer')
