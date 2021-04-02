@@ -8,8 +8,7 @@
 .currentMeme {
   justify-content: center;
   align-content: center;
-  height: 580px;
-  width: 90%;
-  margin-left: 5%;
+  height: 540px;
+  width: 100%;
   object-fit: contain;
 }

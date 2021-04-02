@@ -23,10 +23,19 @@
 
 .leftButton,
 .rightButton {
-  position: relative;
+  position: absolute;
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   align-self: center;
+}
+
+.leftButton {
+  left: 20px;
+}
+
+.rightButton {
+  right: 20px
 }
 
 .closeIcon {

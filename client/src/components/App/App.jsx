@@ -156,7 +156,7 @@ class App extends React.Component {
       memesRender = (
         <Modal
           closeModal={this.closeModal}
-          currentMeme={trendingMemes[currentTrendingIndex].images.original.url}
+          currentMeme={trendingMemes[currentTrendingIndex].images.original.url || currentMeme}
           currentMemeDescription={currentMemeDescription}
           displayArrows={true}
           currentTrendingIndex={currentTrendingIndex}
