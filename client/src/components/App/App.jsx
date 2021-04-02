@@ -10,9 +10,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       displayModal: false,
+      trendingModal: false,
       currentMeme: '',
       currentMemeDescription: '',
       trendingMemes: [],
+      currentTrendingIndex: -1,
       searchedMemes: [],
     }
     this.getMeme = this.getMeme.bind(this);
@@ -21,11 +23,13 @@ class App extends React.Component {
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.previousMeme = this.previousMeme.bind(this);
+    this.nextMeme = this.nextMeme.bind(this);
   }
 
   componentDidMount() {
     this.getMeme();
-    // this.getTrendingMemes()
+    this.getTrendingMemes();
   }
 
   // componentDidUpdate(prev) {
@@ -70,62 +74,99 @@ class App extends React.Component {
   getTrendingMemes() {
     axios.get('/trending')
       .then((response) => {
-        const memes = response.data;
-        this.setState({ trendingMemes: memes });
+        const memes = response.data.data;
+        console.log('Trending memes data: ', memes);
+        this.setState({
+          trendingMemes: memes,
+        });
       })
       .catch((error) => {
         console.log('Error fetching trending memes: ', error);
       })
   }
 
-  handleTrendingClick() {
-    console.log('Trending Click');
-  }
-
-  handleSearchClick() {
-    console.log('Search Click')
-  }
-
   closeModal() {
     this.getMeme();
-    this.setState({ displayModal: false });
-    document.getElementById("background").style.filter = "none"
-    document.getElementById("contents").style.filter = "none"
+    this.setState({
+      displayModal: false,
+      trendingModal: false,
+    });
+    document.getElementById("background").style.filter = "none";
+    document.getElementById("contents").style.filter = "none";
   }
 
   openModal() {
     this.setState({ displayModal: true });
     document.getElementById("background").style.filter = "blur(8px)";
     document.getElementById("contents").style.filter = "blur(8px)";
-    // document.getElementById("background").onClick = () => {
-    //   this.closeModal()
-    // }
-    // document.getElementById("contents").onClick = () => {
-    //   this.closeModal()
-    // }
     document.getElementById('background').onclick = this.closeModal;
     document.getElementById('contents').onclick = this.closeModal;
+  }
+
+  handleTrendingClick() {
+    let trendingIndex = this.state.currentTrendingIndex + 1;
+    this.setState({
+      trendingModal: true,
+      currentTrendingIndex: trendingIndex,
+    });
+    document.getElementById("background").style.filter = "blur(8px)";
+    document.getElementById("contents").style.filter = "blur(8px)";
+    document.getElementById('background').onclick = this.closeModal;
+    document.getElementById('contents').onclick = this.closeModal;
+  }
+
+  handleSearchClick() {
+    console.log('Search Click')
+  }
+
+  previousMeme() {
+    console.log('Previous meme');
+    let currentIndex = this.state.currentTrendingIndex - 1;
+    this.setState({ currentTrendingIndex: currentIndex})
+  }
+
+  nextMeme() {
+    console.log('Next meme');
+    let currentIndex = this.state.currentTrendingIndex + 1;
+    this.setState({ currentTrendingIndex: currentIndex})
   }
 
   render() {
     const {
       displayModal,
+      trendingModal,
       currentMeme,
       currentMemeDescription,
       trendingMemes,
+      currentTrendingIndex,
     } = this.state;
 
     let memesRender;
     if (displayModal === true) {
       memesRender = (
         <Modal
-        closeModal={this.closeModal}
+          closeModal={this.closeModal}
           currentMeme={currentMeme}
           currentMemeDescription={currentMemeDescription}
-          trendingMemes={trendingMemes}
+          displayArrows={false}
         />
       )
     }
+    if (trendingModal === true) {
+      memesRender = (
+        <Modal
+          closeModal={this.closeModal}
+          currentMeme={trendingMemes[currentTrendingIndex].images.original.url}
+          currentMemeDescription={currentMemeDescription}
+          displayArrows={true}
+          currentTrendingIndex={currentTrendingIndex}
+          previousMeme={this.previousMeme}
+          nextMeme={this.nextMeme}
+        />
+      )
+    }
+
+    // const memeURL = response.data.data[randomIndex].images.original.url;
 
     return (
       <div className={styles.app}>

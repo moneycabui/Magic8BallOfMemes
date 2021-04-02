@@ -6,7 +6,6 @@
   width: 50%;
   border: 1px solid #1A1A1A;
   border-radius: 10px;
-  box-shadow: 2px 2px 15px 5px #1A1A1A;
   padding: 20px 15px;
   left: 25%;
   top: 15%;
@@ -14,14 +13,33 @@
   animation: all 3ms ease-out;
 }
 
+.modalContents {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin-left: 50px;
+}
+
+.leftButton,
+.rightButton {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
 .closeIcon {
   justify-content: space-around;
   cursor: pointer;
-  padding: 20px;
-  margin: 15px 10px;
+  padding: 10px;
+  /* margin: 15px 10px; */
   float: right;
-  position: fixed;
+  position: relative;
   z-index: 500;
-  left: 70.5%;
-  top: 14%;
+  /* left: 70.5%;
+  top: 14%; */
+  display: flex;
+  flex-direction: row;
+  align-self: start;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { VscChromeClose } from 'react-icons/vsc';
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import styles from './Modal.css';
 import Memes from '../Memes';
 
@@ -8,17 +9,32 @@ const Modal = (props) => {
     closeModal,
     currentMeme,
     currentMemeDescription,
-    trendingMemes,
+    displayArrows,
+    currentTrendingIndex,
+    previousMeme,
+    nextMeme,
   } = props;
+
+  let leftArrow;
+  let rightArrow;
+  if (currentTrendingIndex > 0 && displayArrows === true) {
+    leftArrow = <IoIosArrowBack className={styles.leftButton} size="40" color="#66FCF1" onClick={previousMeme} />;
+  }
+  if (displayArrows === true) {
+    rightArrow = <IoIosArrowForward className={styles.rightButton} size="40" color="#66FCF1" onClick={nextMeme} />;
+  }
 
   return (
     <div className={styles.modal}>
       <VscChromeClose className={styles.closeIcon} onClick={closeModal} size="30" color="#66FCF1" />
-      <Memes
-        currentMeme={currentMeme}
-        currentMemeDescription={currentMemeDescription}
-        trendingMemes={trendingMemes}
-      />
+      <div className={styles.modalContents}>
+        {leftArrow}
+        <Memes
+          currentMeme={currentMeme}
+          currentMemeDescription={currentMemeDescription}
+        />
+        {rightArrow}
+      </div>
     </div>
   );
 };

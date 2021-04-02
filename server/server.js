@@ -61,27 +61,23 @@ app.get('/searched', (req, res) => {
 
 
 // Get requet to retrieve trending gif(s)/meme(s)
-// app.get('/trending', (req, res) => {
-//   const typeOptions = ['gifs', 'sticker'];
-//   let randomNumber = Math.floor(Math.random() * 2);
-//   let currentType = typeOptions[randomNumber];
-
-//   axios.get(`api.giphy.com/v1/${currentType}/trending`, {
-//     params: {
-//       api_key: APIKey,
-//       limit: 10,
-//       rating: 'pg-13',
-//     }
-//   })
-//     .then((result) => {
-//       res.send(result.data);
-//       res.status(200);
-//     })
-//     .catch((error) => {
-//       console.log('Server error fetching trending memes: ', error);
-//       res.status(400);
-//     })
-// })
+app.get('/trending', (req, res) => {
+  axios.get('http://api.giphy.com/v1/gifs/trending', {
+    params: {
+      api_key: APIKey,
+      limit: 100,
+      rating: 'pg-13',
+    }
+  })
+    .then((result) => {
+      res.send(result.data);
+      res.status(200);
+    })
+    .catch((error) => {
+      console.log('Server error fetching trending memes: ', error);
+      res.status(400);
+    })
+})
 
 app.listen(port,() => {
   console.log(`Server is listening on port ${port}`)

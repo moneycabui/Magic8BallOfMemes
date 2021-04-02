@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './Memes.css';
 
-const Memes = ({ currentMeme, currentMemeDescription }) => {
+
+const Memes = ({ currentMeme, currentMemeDescription, currentMemeType }) => {
+
   return (
     <div>
       <div className={styles.memeContainer}>
