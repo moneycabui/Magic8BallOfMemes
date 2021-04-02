@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Memes.css';
 
 
-const Memes = ({ currentMeme, currentMemeDescription, currentMemeType }) => {
+const Memes = ({ currentMeme, currentMemeDescription }) => {
 
   return (
     <div>

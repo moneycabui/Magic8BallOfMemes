@@ -3,7 +3,6 @@ import axios from 'axios';
 import styles from './App.css';
 import EightBall from '../EightBall';
 import Modal from '../Modal';
-import { IoHeart } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
 
 class App extends React.Component {
@@ -102,11 +101,11 @@ class App extends React.Component {
     document.getElementById('contents').onclick = this.closeModal;
   }
 
-  handleTrendingClick() {
-    let trendingIndex = this.state.currentIndex + 1;
+  handleTrendingClick(event) {
+    event.preventDefault();
     this.setState({
       trendingModal: true,
-      currentIndex: trendingIndex,
+      currentIndex: 0,
     });
     document.getElementById("background").style.filter = "blur(8px)";
     document.getElementById("contents").style.filter = "blur(8px)";
@@ -116,11 +115,10 @@ class App extends React.Component {
 
   handleSearch(event) {
     event.preventDefault();
-    let searchIndex = this.state.currentIndex + 1;
     this.getSearchedMemes(this.state.searchedText);
     this.setState({
       searchModal: true,
-      currentIndex: searchIndex,
+      currentIndex: 0,
     });
     document.getElementById("background").style.filter = "blur(8px)";
     document.getElementById("contents").style.filter = "blur(8px)";
@@ -167,10 +165,15 @@ class App extends React.Component {
       )
     }
     if (trendingModal === true) {
+      let meme = trendingMemes[currentIndex].images.original.url;
+      if (meme === '') {
+        this.setState({ currentIndex: currentIndex + 1 })
+        meme = trendingMemes[currentIndex + 1].images.original.url
+      }
       modalRender = (
         <Modal
           closeModal={this.closeModal}
-          currentMeme={trendingMemes[currentIndex].images.original.url || currentMeme}
+          currentMeme={meme}
           currentMemeDescription={currentMemeDescription}
           displayArrows={true}
           currentIndex={currentIndex}
@@ -180,10 +183,15 @@ class App extends React.Component {
       )
     }
     if (searchModal === true && searchedMemes.length > 0 && searchedText !== '') {
+      let meme = searchedMemes[currentIndex].images.original.url;
+      if (meme === '') {
+        this.setState({ currentIndex: currentIndex + 1 })
+        meme = trendingMemes[currentIndex + 1].images.original.url
+      }
       modalRender = (
         <Modal
           closeModal={this.closeModal}
-          currentMeme={searchedMemes[currentIndex].images.original.url}
+          currentMeme={meme}
           currentMemeDescription={currentMemeDescription}
           displayArrows={true}
           currentIndex={currentIndex}
@@ -208,10 +216,6 @@ class App extends React.Component {
             <input className={styles.searchBar} type="text" onChange={this.handleSearchChange} value={this.state.searchedText} placeholder="Search a keyword"></input>
           </form>
           <div className={styles.buttonsContainer}>
-            {/* <button className={styles.heartButton} > */}
-              {/* <IoHeart /> */}
-            {/* </button> */}
-            {/* <button className={styles.favoritedButton}>Favorited Memes</button> */}
             <button className={styles.searchButton} onClick={this.handleSearch}>Search Memes</button>
             <button className={styles.trendingButton} onClick={this.handleTrendingClick}>Trending Memes</button>
           </div>

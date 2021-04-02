@@ -33,8 +33,7 @@ h3 {
 
 .trendingButton,
 .searchButton,
-.favoritedButton,
-.heartButton {
+.favoritedButton {
   padding: 20px;
   margin: 25px 10px;
   margin-right: 20px;
@@ -58,9 +57,7 @@ h3 {
 .searchButton:hover,
 .searchButton:focus,
 .favoritedButton:hover,
-.favoritedButton:focus,
-.heartButton:hover,
-.heartButton:focus {
+.favoritedButton:focus {
   background-position: right;
   outline: none;
   border: none;
@@ -77,10 +74,6 @@ h3 {
 
 .buttonsContainer {
   justify-self: start;
-}
-
-.heartButton {
-  color: #E4A4E6;
 }
 
 .searchContainer {
