@@ -37,13 +37,12 @@ app.get('/answer', (req, res) => {
 
 // Get request to retrieve searched gif(s)/meme(s)
 app.get('/searched', (req, res) => {
-  const { keyword } = req.body;
-  console.log('Server received searched keyword: ', keyword);
+  const { keyword } = req.query;
   axios.get('http://api.giphy.com/v1/gifs/search', {
     params: {
       'api_key': APIKey,
       'q': keyword,
-      'limit': 10,
+      'limit': 100,
       'lang': 'en',
       'rating': 'pg-13'
     }

@@ -28,6 +28,7 @@
   justify-content: space-between;
   flex-direction: column;
   align-self: center;
+  cursor: pointer;
 }
 
 .leftButton {

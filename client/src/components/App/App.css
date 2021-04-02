@@ -19,14 +19,14 @@ html, body {
 
 h2 {
   font-family: 'Amatic SC', 'Sacramento', 'Dancing Script', cursive;
-  font-size: 48px;
+  font-size: 54px;
   color: #C4C4C4;
   margin: 0px;
 }
 
 h3 {
   font-family: 'Amatic SC', cursive;
-  font-size: 30px;
+  font-size: 27px;
   color: #C4C4C4;
   margin: 0px;
 }
@@ -69,16 +69,47 @@ h3 {
 
 .headersAndButtonsContainer {
   display: grid;
-  grid-template-columns: 50% auto;
-  grid-gap: 100px;
+  grid-template-columns: 35% 30% auto;
+  grid-gap: 25px;
   justify-items: space-between;
   align-items: stretch;
 }
 
 .buttonsContainer {
-  justify-self: end;
+  justify-self: start;
 }
 
 .heartButton {
   color: #E4A4E6;
+}
+
+.searchContainer {
+  display: flex;
+  padding: 35px;
+  padding-right: 10px;
+}
+
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin-left: auto;
+  height: 35px;
+  width: 80%;
+  border: 2px solid #E8E8E8;
+  border-radius: 0px 50px 50px 0px;
+  padding-left: 20px;
+  background-color: #E8E8E8;
+  outline: none
+}
+
+.searchBar:focus {
+  outline: none;
+}
+
+.searchIcon {
+  border-radius: 50% 0% 0% 50%;
+  border: 3px solid#E8E8E8;
+  padding: 10px;
 }

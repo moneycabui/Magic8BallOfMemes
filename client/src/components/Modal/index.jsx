@@ -10,14 +10,14 @@ const Modal = (props) => {
     currentMeme,
     currentMemeDescription,
     displayArrows,
-    currentTrendingIndex,
+    currentIndex,
     previousMeme,
     nextMeme,
   } = props;
 
   let leftArrow;
   let rightArrow;
-  if (currentTrendingIndex > 0 && displayArrows === true) {
+  if (currentIndex > 0 && displayArrows === true) {
     leftArrow = <IoIosArrowBack className={styles.leftButton} size="40" color="#66FCF1" onClick={previousMeme} />;
   }
   if (displayArrows === true) {
