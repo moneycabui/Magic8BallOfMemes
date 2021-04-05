@@ -87,22 +87,26 @@ h3 {
   flex-direction: row;
   justify-content: center;
   align-content: center;
-  margin-left: auto;
+  margin-left: 0px;
   height: 35px;
   width: 80%;
   border: 2px solid #E8E8E8;
   border-radius: 0px 50px 50px 0px;
   padding-left: 20px;
   background-color: #E8E8E8;
+  opacity: 0.8;
   outline: none
 }
 
+.searchBar:hover,
 .searchBar:focus {
   outline: none;
+  opacity: 1;
 }
 
 .searchIcon {
   border-radius: 50% 0% 0% 50%;
   border: 3px solid#E8E8E8;
   padding: 10px;
+  opacity: 0.8;
 }
