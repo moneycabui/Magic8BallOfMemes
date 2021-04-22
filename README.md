@@ -18,6 +18,11 @@ This web application was created to mimic the novelty fortune-telling magic 8 ba
   3. Trending Memes
 
 
+## Demo
+
+![MagicMeme - Searched Memes](https://user-images.githubusercontent.com/69405223/115654608-52303180-a2e6-11eb-84f7-146c44909198.gif)
+
+
 ## Installation
 
   1. Fork repo
@@ -33,14 +38,6 @@ This web application was created to mimic the novelty fortune-telling magic 8 ba
 
   - ```APIKey```
   - (Giphy's access token)
-
-
-## Demo
-
-![MagicMeme - Searched Memes](https://user-images.githubusercontent.com/69405223/115654608-52303180-a2e6-11eb-84f7-146c44909198.gif)
-
-
-
 
 
 ## Description
