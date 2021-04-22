@@ -80,6 +80,7 @@ h3 {
   display: flex;
   padding: 35px;
   padding-right: 10px;
+  height: 35px;
 }
 
 .searchBar {

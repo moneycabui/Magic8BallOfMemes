@@ -60,11 +60,12 @@
 .leftButton:focus,
 .rightButton:hover,
 .rightButton:focus {
-  box-shadow: 2px 2px 7px 5px #3B3B3B;
-
+  /* box-shadow: 2px 2px 7px 5px #3B3B3B; */
+  opacity: 0.7;
 }
 
 .closeIcon:hover,
 .closeIcon:focus {
-  box-shadow: 2px 2px 10px 2px #3B3B3B;
+  /* box-shadow: 2px 2px 10px 2px #3B3B3B; */
+  opacity: 0.7;
 }
