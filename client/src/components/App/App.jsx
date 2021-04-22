@@ -61,7 +61,9 @@ class App extends React.Component {
     })
       .then((response) => {
         const searched = response.data.data;
-        this.setState({ searchedMemes: searched });
+        this.setState({
+          searchedMemes: searched
+        });
       })
       .catch((error) => {
         console.log('Error fetching searched memes: ', error);
@@ -88,6 +90,7 @@ class App extends React.Component {
       displayModal: false,
       trendingModal: false,
       searchModal: false,
+      searchedText: '',
     });
     document.getElementById("background").style.filter = "none";
     document.getElementById("contents").style.filter = "none";
