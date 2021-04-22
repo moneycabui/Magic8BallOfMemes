@@ -43,14 +43,18 @@ MagicMeme Application:
 ![MagicMeme2](https://user-images.githubusercontent.com/69405223/115654495-1bf2b200-a2e6-11eb-96f6-0d8ebf176216.gif)
 
 
+
 Responses: Yes/No/Maybe/Try Again:
 
 ![MagicMeme - Yes No Maybe](https://user-images.githubusercontent.com/69405223/115654569-3d539e00-a2e6-11eb-95b9-e4b06bfaac6e.gif)
 
 
+
 Searched Memes:
 
 ![MagicMeme - Searched Memes](https://user-images.githubusercontent.com/69405223/115654608-52303180-a2e6-11eb-84f7-146c44909198.gif)
+
+
 
 Trending Memes:
 
