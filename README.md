@@ -37,21 +37,8 @@ This web application was created to mimic the novelty fortune-telling magic 8 ba
 
 ## Demo
 
-Searched Memes:
-
 ![MagicMeme - Searched Memes](https://user-images.githubusercontent.com/69405223/115654608-52303180-a2e6-11eb-84f7-146c44909198.gif)
 
-
-
-Responses: Yes/No/Maybe/Try Again:
-
-![MagicMeme - Yes No Maybe](https://user-images.githubusercontent.com/69405223/115654569-3d539e00-a2e6-11eb-95b9-e4b06bfaac6e.gif)
-
-
-
-Trending Memes:
-
-![MagicMeme - Trending Memes](https://user-images.githubusercontent.com/69405223/115654626-5a886c80-a2e6-11eb-8b10-e8b1b2091289.gif)
 
 
 
