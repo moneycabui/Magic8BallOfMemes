@@ -28,6 +28,7 @@ This web application allows crafters to discover and track patterns and find oth
 
   ![User_Author_Page](https://user-images.githubusercontent.com/73146132/115321886-a944d380-a139-11eb-9a47-183aa4bc5abd.gif)
   
+  
   - Like patterns with the Heart Button
   - Start Projects, Track Pattern Progress or Delete patterns
   - Create by contributing your own pattern to the community
